@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "datastruct"
+version = "0.1.0"
+description = ""
+authors = ["Pulsatill <arch-angel2002@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
