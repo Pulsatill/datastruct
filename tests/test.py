@@ -13,6 +13,11 @@ class TestStack(unittest.TestCase):
         stack.push("data2")
         self.assertEqual(stack.top.data, "data2")
         self.assertEqual(stack.top.next_node.data, "data1")
+        stack.push("data3")
+        stack.pop()
+        self.assertEqual(stack.top.data, "data2")
+        stack.pop()
+        self.assertEqual(stack.top.data, "data1")
 
 
 class TestNode(unittest.TestCase):
