@@ -19,10 +19,3 @@ class Stack:
         else:
             self.top = self.top.next_node
             return popped_data.data
-
-
-stack = Stack()
-stack.push('data1')
-data = stack.pop()
-print(stack.top)
-print(data)
