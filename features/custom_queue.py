@@ -15,3 +15,11 @@ class Queue:
         else:
             self.tail.next_node = new_node
             self.tail = new_node
+
+    def dequeue(self):
+        dequeued_data = self.head
+        if self.head is None:
+            return None
+        else:
+            self.head = self.head.next_node
+            return dequeued_data.data
