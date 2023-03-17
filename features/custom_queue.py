@@ -17,9 +17,10 @@ class Queue:
             self.tail = new_node
 
     def dequeue(self):
-        dequeued_data = self.head
         if self.head is None:
             return None
-        else:
-            self.head = self.head.next_node
-            return dequeued_data.data
+        dequeued_data = self.head
+        self.head = self.head.next_node
+        if self.head is None:
+            self.tail = None
+        return dequeued_data.data
