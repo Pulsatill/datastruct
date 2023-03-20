@@ -3,6 +3,7 @@ import unittest
 from features.Node import Node
 from features.Stack import Stack
 from features.custom_queue import Queue
+from features.linked_list import LinkedList
 
 
 class TestStack(unittest.TestCase):
@@ -46,3 +47,22 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(queue.dequeue(), "data2")
         self.assertEqual(queue.head.data, "data3")
         self.assertEqual(queue.tail.data, "data3")
+
+
+class TestLinkedList(unittest.TestCase):
+    def test_LinkedList(self):
+        ll = LinkedList()
+        ll.insert_beginning({'id': 1})
+        self.assertEqual(ll.head.data, {'id': 1})
+        self.assertEqual(ll.tail.data, {'id': 1})
+        ll.insert_at_end({'id': 2})
+        self.assertEqual(ll.head.data, {'id': 1})
+        self.assertEqual(ll.tail.data, {'id': 2})
+        ll.insert_at_end({'id': 3})
+        self.assertEqual(ll.head.data, {'id': 1})
+        self.assertEqual(ll.tail.data, {'id': 3})
+        ll.insert_beginning({'id': 0})
+        self.assertEqual(ll.head.data, {'id': 0})
+        self.assertEqual(ll.tail.data, {'id': 3})
+        self.assertEqual(ll.print_ll(), " {'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None")
+
