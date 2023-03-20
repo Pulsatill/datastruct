@@ -25,18 +25,12 @@ class LinkedList:
 
     def insert_beginning(self, data):
         new_node = Node(data)
-        if self.head is None:
-            self.head = new_node
+        new_node.next_node = self.head
+        if self.tail is None:
             self.tail = new_node
-        else:
-            new_node.next_node = self.head
-            self.head = new_node
+        self.head = new_node
 
     def insert_at_end(self, data):
         new_node = Node(data)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
-        else:
-            self.tail.next_node = new_node
-            self.tail = new_node
+        self.tail.next_node = new_node
+        self.tail = new_node

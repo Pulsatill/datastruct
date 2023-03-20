@@ -65,4 +65,3 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(ll.head.data, {'id': 0})
         self.assertEqual(ll.tail.data, {'id': 3})
         self.assertEqual(ll.print_ll(), " {'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None")
-
