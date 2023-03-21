@@ -1,4 +1,5 @@
 import unittest
+import pytest
 
 from features.Node import Node
 from features.Stack import Stack
@@ -65,3 +66,24 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(ll.head.data, {'id': 0})
         self.assertEqual(ll.tail.data, {'id': 3})
         self.assertEqual(ll.print_ll(), " {'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None")
+
+
+class TestLinkedListData(unittest.TestCase):
+    @pytest.fixture(autouse=True)
+    def _pass_fixture(self, capsys):
+        self.capsys = capsys
+
+    def test_get_data_by_id(self):
+        ll2 = LinkedList()
+        ll2.insert_beginning({'id': 5, 'username': 'lazzy508509'})
+        ll2.insert_at_end({'id': 6, 'username': 'mik.roz'})
+        ll2.insert_at_end({'id': 7, 'username': 'mosh_s'})
+        ll2.insert_beginning({'id': 4, 'username': 'serebro'})
+        self.assertEqual(ll2.to_list(), [{'id': 4, 'username': 'serebro'},
+                                        {'id': 5, 'username': 'lazzy508509'},
+                                        {'id': 6, 'username': 'mik.roz'},
+                                        {'id': 7, 'username': 'mosh_s'}])
+        self.assertEqual(ll2.get_data_by_id(5), {'id': 5, 'username': 'lazzy508509'})
+        ll2.get_data_by_id(88)
+        stdout, stderr = self.capsys.readouterr()
+        self.assertEqual("Данные не являются словарем или в словаре нет 88.", stdout)

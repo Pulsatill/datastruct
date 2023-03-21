@@ -1,5 +1,5 @@
 class Node:
-    data = []
+    ll_lst = []
 
     def __init__(self, data, next_node=None):
         self.data = data
@@ -34,3 +34,22 @@ class LinkedList:
         new_node = Node(data)
         self.tail.next_node = new_node
         self.tail = new_node
+
+    def to_list(self):
+        ll_lst = []
+        node = self.head
+        if node is None:
+            return None
+        while node:
+            ll_lst.append(node.data)
+            node = node.next_node
+        return ll_lst
+
+    def get_data_by_id(self, data):
+        ll_lst = self.to_list()
+        for d in ll_lst:
+            try:
+                if d.get('id') == data:
+                    return d
+            except AttributeError:
+                print(f"Данные не являются словарем или в словаре нет {data}.")
